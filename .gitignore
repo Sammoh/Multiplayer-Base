@@ -1,0 +1,14 @@
+# Build ignores
+/[Bb]uild/
+/[Bb]uilds/
+/screenshots/
+/documentation/.idea/
+/.idea/
+/project_clone_*[0-9]/
+/ProjectFiles/
+/Prints/
+
+# OS file ignores
+Thumbs.db
+.DS_Store
+

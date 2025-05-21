@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Samples/Netcode for GameObjects/2.3.2/Bootstrap/Scenes/Bootstrap.unity
+    guid: 7a6e122bd2b01425989087a299b6bb93
+  - enabled: 1
+    path: Assets/Widgets/Scenes/WidgetsQuickstart.unity
+    guid: 9c44f4b7557112c44ade89c211ee5830
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 0
+    path: Assets/NetcodeForEntitiesSetup/Scenes/Gameplay.unity
+    guid: 9cd9e26f6e5bec94d8a2f58c53cad070
+  - enabled: 0
+    path: Assets/NetcodeForEntitiesSetup/Scenes/GameplaySubScene.unity
+    guid: 1be5d78fe9c9cd6418c15d22810fef0e
+  m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 73aa1eccbdf846a4d9993ef6ea782a57, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_UseUCBPForAssetBundles: 0
