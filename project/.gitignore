@@ -6,6 +6,7 @@
 /QCAR/
 /.vs/
 /.idea/
+/.utmp/
 /*.sln
 /*.csproj
 /*.csproj.user
