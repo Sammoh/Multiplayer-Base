@@ -21,6 +21,7 @@ EditorBuildSettings:
     path: Assets/NetcodeForEntitiesSetup/Scenes/GameplaySubScene.unity
     guid: 1be5d78fe9c9cd6418c15d22810fef0e
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 8a13c3eb1c935c641b4645d59f38fab1, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 1d4d780634468fc46b1369a60928ee52, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 73aa1eccbdf846a4d9993ef6ea782a57, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
