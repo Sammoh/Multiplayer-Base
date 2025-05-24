@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41
+  m_fontSize: 37.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1673,6 +1673,77 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 5
   m_LayoutPriority: 1
+--- !u!1 &141336297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 141336300}
+  - component: {fileID: 141336298}
+  - component: {fileID: 141336299}
+  m_Layer: 0
+  m_Name: SessionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &141336298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141336297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3636432730
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 3
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &141336299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141336297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57087329cf7e7a4dad222138146ee12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+--- !u!4 &141336300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141336297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 122.01185, y: 306.6623, z: -1.2775043}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &141720762
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,7 +2323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.030000001, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.4921265, y: 0}
+  m_AnchoredPosition: {x: -1.492096, y: 0}
   m_SizeDelta: {x: 2.9841003, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &182050803
@@ -3718,7 +3789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.020000001, y: 0.19768827}
   m_AnchorMax: {x: 0.119, y: 0.836}
-  m_AnchoredPosition: {x: -0.12634277, y: -0.9151268}
+  m_AnchoredPosition: {x: -0.12634277, y: -0.9151249}
   m_SizeDelta: {x: 0.25259972, y: 0.9649658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &318825106
@@ -4882,7 +4953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.030000001, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.4921265, y: 0}
+  m_AnchoredPosition: {x: -1.492096, y: 0}
   m_SizeDelta: {x: 2.9841003, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &497760204
@@ -5970,7 +6041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.09270611}
   m_AnchorMax: {x: 1, y: 0.9083633}
-  m_AnchoredPosition: {x: 0.00024414062, y: -4.857605}
+  m_AnchoredPosition: {x: 0.00024414062, y: -4.857666}
   m_SizeDelta: {x: 0, y: 0.11767578}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &586334226
@@ -8352,7 +8423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.042000003, y: 0.638}
   m_AnchorMax: {x: 0.95570374, y: 0.76600003}
-  m_AnchoredPosition: {x: -0.35186768, y: 0.49990845}
+  m_AnchoredPosition: {x: -0.3519287, y: 0.49990845}
   m_SizeDelta: {x: 2, y: -1.1854248}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &894280964
@@ -10868,13 +10939,13 @@ MonoBehaviour:
   JoinedSession:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1714466189}
-        m_TargetAssemblyTypeName: SignInUI, TextChatSample
-        m_MethodName: Evt_OnLobbySessionCreated
+      - m_Target: {fileID: 141336297}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14793,7 +14864,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.5
+  m_fontSize: 37.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15425,7 +15496,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.65
+  m_fontSize: 37.6
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17743,13 +17814,13 @@ MonoBehaviour:
   JoinedSession:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1714466189}
-        m_TargetAssemblyTypeName: SignInUI, TextChatSample
-        m_MethodName: Evt_OnLobbySessionCreated
+      - m_Target: {fileID: 141336297}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19824,6 +19895,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 448934313}
   - {fileID: 1114774669}
+  - {fileID: 141336300}
   - {fileID: 1807943757}
   - {fileID: 335822790}
   - {fileID: 1604587048}

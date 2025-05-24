@@ -5,7 +5,8 @@
         "Unity.Services.Core",
         "Unity.Services.Vivox",
         "Unity.Services.Authentication",
-        "Unity.Services.Multiplayer"
+        "Unity.Services.Multiplayer",
+        "NetworkManager"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
