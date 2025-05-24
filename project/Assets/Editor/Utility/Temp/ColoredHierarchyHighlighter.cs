@@ -9,12 +9,12 @@ public static class ColoredHierarchyHighlighter
 {
     private static readonly Dictionary<Type, Color> componentColors = new Dictionary<Type, Color>()
     {
-        { typeof(Rigidbody), new Color(0.4f, 0.8f, 1f, 0.3f) },       // Light blue
-        { typeof(Collider), new Color(1f, 0.6f, 0.4f, 0.3f) },        // Soft orange
-        { typeof(AudioSource), new Color(0.6f, 1f, 0.6f, 0.3f) },     // Pale green
-        { typeof(Light), new Color(1f, 1f, 0.4f, 0.3f) },             // Soft yellow
-        { typeof(Camera), new Color(1f, 0.4f, 0.8f, 0.3f) },          // Pink
-        { typeof(Animator), new Color(0.8f, 0.4f, 1f, 0.3f) },        // Purple
+        // { typeof(Rigidbody), new Color(0.4f, 0.8f, 1f, 0.3f) },       // Light blue
+        // { typeof(Collider), new Color(1f, 0.6f, 0.4f, 0.3f) },        // Soft orange
+        // { typeof(AudioSource), new Color(0.6f, 1f, 0.6f, 0.3f) },     // Pale green
+        // { typeof(Light), new Color(1f, 1f, 0.4f, 0.3f) },             // Soft yellow
+        // { typeof(Camera), new Color(1f, 0.4f, 0.8f, 0.3f) },          // Pink
+        // { typeof(Animator), new Color(0.8f, 0.4f, 1f, 0.3f) },        // Purple
         // Add more as needed...
     };
 

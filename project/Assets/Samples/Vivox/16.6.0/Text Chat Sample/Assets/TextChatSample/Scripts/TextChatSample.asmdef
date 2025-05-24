@@ -4,7 +4,8 @@
     "references": [
         "Unity.Services.Core",
         "Unity.Services.Vivox",
-        "Unity.Services.Authentication"
+        "Unity.Services.Authentication",
+        "Unity.Services.Multiplayer"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Unity.Services.Multiplayer;
 #if AUTH_PACKAGE_PRESENT
 using Unity.Services.Authentication;
 #endif
@@ -14,6 +16,8 @@ public class SignInUI : MonoBehaviour
     public Button LoginButton;
     public InputField DisplayNameInput;
     public GameObject LoginUIObject;
+
+    private ISession _sessionIdKey;
 
     void Start()
     {
@@ -37,15 +41,63 @@ public class SignInUI : MonoBehaviour
         
         VivoxService.Instance.LoggedIn += async () =>
         {
-            Debug.Log("Logged in vivox");
+            Debug.Log("Logged in Vivox");
             var info = await AuthenticationService.Instance.GetPlayerInfoAsync();
-            
-            // Set a value in the lobby service to store the vivox code
-            // await AuthenticationService.Instance.SetPlayerInfoAsync(new PlayerInfo()
-            
             TextSampleUIManager.Instance.SignedInPlayerDisplayName = info.Username;
             TextSampleUIManager.Instance.ShowConversationsUI();
         };
+    }
+    
+    // todo create new properties that include vivox session id
+    public void Evt_OnLobbySessionCreated(ISession sessionId)
+    {
+        _sessionIdKey = sessionId;
+        
+        // USE THE SESSION ID TO GET THE LOBBY CODE
+        var lobbyCode = sessionId.Code;
+
+        var msg = $"New lobby session created: {lobbyCode}";
+        var sessions = MultiplayerService.Instance.Sessions;
+
+        // log all sessions
+        // foreach (var session in sessions)
+        // {
+        //     var sessionIdKey = session.Key;
+        //     var sessionIdValue = session.Value;
+        //     msg += $"\nSession ID: {sessionIdKey}";
+        //
+        // }
+        
+        // get the first session in dictionary
+        var session = sessions.FirstOrDefault().Value;
+        
+        Debug.Log(msg);
+        
+        // GET THE LOBBY ID
+        var lobbyId = session.Id;
+        // GET THE LOBBY NAME
+        var lobbyName = session.Name;
+        // GET THE LOBBY TYPE
+        var lobbyType = session.Type;
+            
+        msg += $"\nLobby ID: {lobbyId}\nLobby Name: {lobbyName}\nLobby Type: {lobbyType}\n";
+            
+        // GET THE LOBBY PROPERTIES
+        // var lobbyProperties = session.Properties;
+        // log all properties   
+        // foreach (var property in lobbyProperties)
+        // {
+        //     msg += $"Key: {property.Key} / Value: {property.Value}\n";
+        // }
+        
+        Debug.Log(msg);
+        
+        CreateNetworkedHostData(lobbyId, lobbyName, lobbyType, lobbyCode);
+    }
+
+    private void CreateNetworkedHostData(string lobbyId, string lobbyName, string lobbyType, string lobbyCode)
+    {
+        Debug.LogError("TODO: UPDATE LOBBY DATA");
     }
 
     void OnEnable()
