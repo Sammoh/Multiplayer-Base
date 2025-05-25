@@ -35,7 +35,7 @@ public class VivoxManager : MonoBehaviour
                 if (m_Instance == null)
                 {
                     // Search for existing instance.
-                    m_Instance = (VivoxManager)FindObjectOfType(typeof(VivoxManager));
+                    m_Instance = (VivoxManager)FindFirstObjectByType(typeof(VivoxManager));
 
                     // Create new instance if one doesn't already exist.
                     if (m_Instance == null)

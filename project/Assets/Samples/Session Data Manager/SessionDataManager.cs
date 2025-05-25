@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.Services.Multiplayer;
 using UnityEngine;
 
-public class SessionManager : NetworkBehaviour
+public class SessionDataManager : NetworkBehaviour
 {
-    public static SessionManager Instance { get; private set; }
+    public static SessionDataManager Instance { get; private set; }
 
     // Server-authoritative session data
-    // public NetworkVariable<ServerSessionData> ServerData = new(
-    //     new ServerSessionData(), NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<ServerSessionData> serverData;
 
     // Clients session data managed by server
-    private readonly Dictionary<ulong, ClientSessionData> clientSessionDataMap = new();
+    private readonly Dictionary<ulong, ClientSessionData> _clientSessionDataMap = new();
 
     private void Awake()
     {
@@ -32,6 +32,20 @@ public class SessionManager : NetworkBehaviour
         {
             NetworkManager.Singleton.OnClientDisconnectCallback += HandleClientDisconnect;
         }
+        
+        if (IsClient && !IsServer)
+        {
+            serverData.OnValueChanged += OnServerDataChanged;
+
+            // Immediately check current value
+            OnServerDataChanged(serverData.Value, serverData.Value);
+        }
+    }
+
+    private void OnServerDataChanged(ServerSessionData previous, ServerSessionData current)
+    {
+        Debug.Log($"Map loaded for session: {current.MapName}");
+        // You could now trigger a map loader or set UI label
     }
 
     public override void OnNetworkDespawn()
@@ -41,13 +55,27 @@ public class SessionManager : NetworkBehaviour
             NetworkManager.Singleton.OnClientDisconnectCallback -= HandleClientDisconnect;
         }
     }
-    
-    // Todo - when the server realizes that a client has connected then the server tells the client that there is a vivox code
+
+    public void OnSessionJoined(ISession session)
+    {
+        // check to make sure it's the server
+        if (IsServer)
+        {
+            // write the session data to the ServerSessionData
+            SetServerSessionData(new ServerSessionData()
+            {
+                SessionName = session.Name,
+                MaxPlayers = session.MaxPlayers,
+                MapName = "VIVOX CODE",
+                AllowSpectators = true
+            });
+        }
+    }
     
     public void SetServerSessionData(ServerSessionData data)
     {
         if (!IsServer) return;
-        // ServerData.Value = data;
+        serverData.Value = data;
         SetServerSessionDataServerRpc(data);
     }
 
@@ -56,7 +84,7 @@ public class SessionManager : NetworkBehaviour
     public void SetServerSessionDataServerRpc(ServerSessionData data)
     {
         if (!IsServer) return;
-        // ServerData.Value = data;
+        serverData.Value = data;
         Debug.Log("Server session data updated.");
     }
 
@@ -66,15 +94,15 @@ public class SessionManager : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        clientSessionDataMap[clientId] = clientData;
+        _clientSessionDataMap[clientId] = clientData;
         Debug.Log($"Registered client {clientId} with display name {clientData.DisplayName}.");
     }
 
     private void HandleClientDisconnect(ulong clientId)
     {
-        if (clientSessionDataMap.ContainsKey(clientId))
+        if (_clientSessionDataMap.ContainsKey(clientId))
         {
-            clientSessionDataMap.Remove(clientId);
+            _clientSessionDataMap.Remove(clientId);
             Debug.Log($"Client {clientId} disconnected and removed from session data.");
         }
     }
@@ -82,7 +110,7 @@ public class SessionManager : NetworkBehaviour
     // Server method to retrieve client data (server authoritative)
     public ClientSessionData GetClientData(ulong clientId)
     {
-        clientSessionDataMap.TryGetValue(clientId, out var data);
+        _clientSessionDataMap.TryGetValue(clientId, out var data);
         return data;
     }
 
@@ -90,10 +118,10 @@ public class SessionManager : NetworkBehaviour
     public ClientSessionData GetLocalClientData()
     {
         var clientId = NetworkManager.Singleton.LocalClientId;
-        clientSessionDataMap.TryGetValue(clientId, out var data);
+        _clientSessionDataMap.TryGetValue(clientId, out var data);
         return data;
     }
 
     // Get all client data on the server
-    public IReadOnlyDictionary<ulong, ClientSessionData> GetAllClientsData() => clientSessionDataMap;
+    public IReadOnlyDictionary<ulong, ClientSessionData> GetAllClientsData() => _clientSessionDataMap;
 }

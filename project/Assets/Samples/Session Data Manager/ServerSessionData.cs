@@ -1,7 +1,7 @@
 ﻿using System;
 using Unity.Netcode;
 
-public class ServerSessionData : INetworkSerializable, IEquatable<ServerSessionData>
+public struct ServerSessionData : INetworkSerializable, IEquatable<ServerSessionData>
 {
     public string SessionName;
     public int MaxPlayers;
@@ -18,21 +18,20 @@ public class ServerSessionData : INetworkSerializable, IEquatable<ServerSessionD
 
     public bool Equals(ServerSessionData other)
     {
-        if (other == null) return false;
-
         return SessionName == other.SessionName &&
                MaxPlayers == other.MaxPlayers &&
                MapName == other.MapName &&
                AllowSpectators == other.AllowSpectators;
     }
 
-    public override bool Equals(object obj)
-    {
-        return Equals(obj as ServerSessionData);
-    }
+    public override bool Equals(object obj) => obj is ServerSessionData other && Equals(other);
+    public override int GetHashCode() => HashCode.Combine(SessionName, MaxPlayers, MapName, AllowSpectators);
 
-    public override int GetHashCode()
+    public ServerSessionData(string sessionName = "", int maxPlayers = 0, string mapName = "", bool allowSpectators = false)
     {
-        return HashCode.Combine(SessionName, MaxPlayers, MapName, AllowSpectators);
+        SessionName = sessionName ?? string.Empty;
+        MaxPlayers = maxPlayers;
+        MapName = mapName ?? string.Empty;
+        AllowSpectators = allowSpectators;
     }
 }
