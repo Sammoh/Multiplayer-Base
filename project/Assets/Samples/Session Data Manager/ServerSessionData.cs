@@ -10,10 +10,23 @@ public struct ServerSessionData : INetworkSerializable, IEquatable<ServerSession
 
     public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
+        SessionName ??= string.Empty;
+        MapName ??= string.Empty;
+        MaxPlayers = Math.Max(MaxPlayers, 1); // Ensure at least 1 player
+        AllowSpectators = AllowSpectators || false; // Default to false if not set
+
         serializer.SerializeValue(ref SessionName);
         serializer.SerializeValue(ref MaxPlayers);
         serializer.SerializeValue(ref MapName);
         serializer.SerializeValue(ref AllowSpectators);
+    }
+
+    public ServerSessionData(string sessionName = "", int maxPlayers = 0, string mapName = "", bool allowSpectators = false)
+    {
+        SessionName = sessionName ?? string.Empty;
+        MaxPlayers = maxPlayers;
+        MapName = mapName ?? string.Empty;
+        AllowSpectators = allowSpectators;
     }
 
     public bool Equals(ServerSessionData other)
@@ -26,12 +39,4 @@ public struct ServerSessionData : INetworkSerializable, IEquatable<ServerSession
 
     public override bool Equals(object obj) => obj is ServerSessionData other && Equals(other);
     public override int GetHashCode() => HashCode.Combine(SessionName, MaxPlayers, MapName, AllowSpectators);
-
-    public ServerSessionData(string sessionName = "", int maxPlayers = 0, string mapName = "", bool allowSpectators = false)
-    {
-        SessionName = sessionName ?? string.Empty;
-        MaxPlayers = maxPlayers;
-        MapName = mapName ?? string.Empty;
-        AllowSpectators = allowSpectators;
-    }
 }

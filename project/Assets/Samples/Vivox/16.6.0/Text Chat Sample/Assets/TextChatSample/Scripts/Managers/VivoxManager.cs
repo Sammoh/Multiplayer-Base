@@ -73,13 +73,13 @@ public class VivoxManager : MonoBehaviour
     public async Task InitializeAsync(string playerName)
     {
 
-// #if AUTH_PACKAGE_PRESENT
-//         if (!CheckManualCredentials())
-//         {
-//             AuthenticationService.Instance.SwitchProfile(playerName);
-//             await AuthenticationService.Instance.SignInAnonymouslyAsync();
-//         }
-// #endif
+#if AUTH_PACKAGE_PRESENT
+        if (!CheckManualCredentials())
+        {
+            AuthenticationService.Instance.SwitchProfile(playerName);
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        }
+#endif
 
         await VivoxService.Instance.InitializeAsync();
     }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.Services.Multiplayer;
+using Unity.Services.Vivox;
 using UnityEngine;
 
 public class SessionDataManager : NetworkBehaviour
@@ -56,23 +57,34 @@ public class SessionDataManager : NetworkBehaviour
         }
     }
 
+    // TODO: Is this needed here?
     public void OnSessionJoined(ISession session)
     {
-        // check to make sure it's the server
-        if (IsServer)
-        {
-            // write the session data to the ServerSessionData
-            SetServerSessionData(new ServerSessionData()
-            {
-                SessionName = session.Name,
-                MaxPlayers = session.MaxPlayers,
-                MapName = "VIVOX CODE",
-                AllowSpectators = true
-            });
-        }
+        // VivoxService.Instance.ChannelJoined += channelId =>
+        // {
+        //     Debug.LogError($"Logged in to Vivox to channel: {channelId}");
+        //     if (IsServer)
+        //     {
+        //         // set the session data on the server
+        //         SetServerSessionData(new ServerSessionData()
+        //         {
+        //             SessionName = session.Name,
+        //             MaxPlayers = session.MaxPlayers,
+        //             MapName = channelId,
+        //             AllowSpectators = true
+        //         });
+        //         
+        //         Debug.LogError($"Server session data set for session: {session.Name}");
+        //     }
+        //     else 
+        //     {
+        //         // Client-side logic if needed
+        //         Debug.LogError($"Client joined session: {session.Name}");
+        //     }
+        // };
     }
-    
-    public void SetServerSessionData(ServerSessionData data)
+
+    private void SetServerSessionData(ServerSessionData data)
     {
         if (!IsServer) return;
         serverData.Value = data;

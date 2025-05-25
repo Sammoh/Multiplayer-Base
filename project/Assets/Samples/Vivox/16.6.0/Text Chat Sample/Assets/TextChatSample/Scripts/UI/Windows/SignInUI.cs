@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Unity.Services.Multiplayer;
 #if AUTH_PACKAGE_PRESENT
 using Unity.Services.Authentication;
 #endif
@@ -17,15 +15,16 @@ public class SignInUI : MonoBehaviour
     public InputField DisplayNameInput;
     public GameObject LoginUIObject;
 
-    private ISession _sessionIdKey;
-
     void Start()
     {
-        VivoxService.Instance.LoggedIn += async () =>
+        DisplayNameInput.onValueChanged.AddListener(InputAccountName);
+        LoginButton.onClick.AddListener(async () => { await LoginToVivoxService(); });
+
+        VivoxService.Instance.ChannelJoined += channelId =>
         {
-            Debug.Log("Logged in Vivox");
-            var info = await AuthenticationService.Instance.GetPlayerInfoAsync();
-            TextSampleUIManager.Instance.SignedInPlayerDisplayName = info.Username;
+            Debug.Log($"Channel Joined: {channelId}");
+            var userDisplayName = AuthenticationService.Instance.PlayerName;
+            TextSampleUIManager.Instance.SignedInPlayerDisplayName = userDisplayName;
             TextSampleUIManager.Instance.ShowConversationsUI();
         };
     }
