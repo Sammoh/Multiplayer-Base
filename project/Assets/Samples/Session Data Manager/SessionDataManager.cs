@@ -60,28 +60,14 @@ public class SessionDataManager : NetworkBehaviour
     // TODO: Is this needed here?
     public void OnSessionJoined(ISession session)
     {
-        // VivoxService.Instance.ChannelJoined += channelId =>
-        // {
-        //     Debug.LogError($"Logged in to Vivox to channel: {channelId}");
-        //     if (IsServer)
-        //     {
-        //         // set the session data on the server
-        //         SetServerSessionData(new ServerSessionData()
-        //         {
-        //             SessionName = session.Name,
-        //             MaxPlayers = session.MaxPlayers,
-        //             MapName = channelId,
-        //             AllowSpectators = true
-        //         });
-        //         
-        //         Debug.LogError($"Server session data set for session: {session.Name}");
-        //     }
-        //     else 
-        //     {
-        //         // Client-side logic if needed
-        //         Debug.LogError($"Client joined session: {session.Name}");
-        //     }
-        // };
+        
+        VivoxService.Instance.ChannelJoined += channelId =>
+        {
+            Debug.Log($"Vivox channel joined: {channelId}");
+            // join the Vivox channel
+            ClearVivoxChannel();
+            // join sercer session data
+        };
     }
 
     private void SetServerSessionData(ServerSessionData data)
@@ -136,4 +122,18 @@ public class SessionDataManager : NetworkBehaviour
 
     // Get all client data on the server
     public IReadOnlyDictionary<ulong, ClientSessionData> GetAllClientsData() => _clientSessionDataMap;
+    
+    // clear vivox channel before entering a new session
+    public void ClearVivoxChannel()
+    {
+        if (VivoxService.Instance != null)
+        {
+            VivoxService.Instance.LeaveAllChannelsAsync();
+            Debug.Log("Cleared Vivox channels.");
+        }
+        else
+        {
+            Debug.LogWarning("VivoxService is not initialized.");
+        }
+    }
 }
