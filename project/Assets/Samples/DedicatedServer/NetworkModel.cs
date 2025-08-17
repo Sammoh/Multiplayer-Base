@@ -1,6 +1,9 @@
 using Unity.Collections;
 using Unity.Netcode;
 
+// NOTE: This file is deprecated. Use DedicatedServer.Infrastructure.Networking.NetworkString instead.
+// This file remains for backward compatibility only.
+
 namespace Matchplay.Networking
 {
     public enum ConnectStatus

@@ -5,6 +5,9 @@ using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP; // Optional but recommended for IP/port config
 
+// NOTE: This file is deprecated. Use DedicatedServer.Infrastructure.Unity.UnityServerService instead.
+// This file remains for backward compatibility only.
+
 namespace Server
 {
     /// <summary>
