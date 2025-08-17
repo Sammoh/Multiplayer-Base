@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
+// NOTE: This file is deprecated. Use DedicatedServer.Infrastructure.Configuration.UnityConfigurationService instead.
+// This file remains for backward compatibility only.
+
 namespace Matchplay.Shared
 {
     /// <summary>

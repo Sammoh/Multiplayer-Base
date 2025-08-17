@@ -4,6 +4,9 @@ using System.Text;
 // using Matchplay.Shared.Tools;
 using UnityEngine;
 
+// NOTE: This file is deprecated. Use DedicatedServer.Domain.Entities.* instead.
+// This file remains for backward compatibility only.
+
 namespace Matchplay.Shared
 {
     public enum Map

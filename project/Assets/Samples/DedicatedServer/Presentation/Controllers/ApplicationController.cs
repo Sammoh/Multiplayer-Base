@@ -7,6 +7,7 @@ using DedicatedServer.Domain.Interfaces;
 using DedicatedServer.Domain.ValueObjects;
 using DedicatedServer.Infrastructure.Configuration;
 using DedicatedServer.Infrastructure.Unity;
+using DedicatedServer.Tests;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -38,6 +39,9 @@ namespace DedicatedServer.Presentation.Controllers
                 return;
             
             Debug.Log("DEDICATED_SERVER v0.2 - Clean Architecture");
+
+            // Run architecture tests to verify setup
+            ArchitectureTests.RunTests();
 
             // Bootstrap services
             BootstrapServices();

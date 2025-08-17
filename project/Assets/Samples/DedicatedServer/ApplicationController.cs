@@ -3,6 +3,9 @@ using Matchplay.Client;
 using Matchplay.Server;
 using UnityEngine;
 
+// NOTE: This file is deprecated. Use DedicatedServer.Presentation.Controllers.ApplicationController instead.
+// This file remains for backward compatibility only.
+
 namespace Matchplay.Shared
 {
     public class ApplicationController : MonoBehaviour

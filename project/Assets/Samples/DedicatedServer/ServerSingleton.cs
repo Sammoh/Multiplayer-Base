@@ -6,6 +6,9 @@ using Server;
 using Unity.Services.Core;
 using UnityEngine;
 
+// NOTE: This file is deprecated. Use DedicatedServer.Presentation.MonoBehaviours.ServerManager instead.
+// This file remains for backward compatibility only.
+
 namespace Matchplay.Server
 {
     /// <summary>
