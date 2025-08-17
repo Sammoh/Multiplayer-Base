@@ -23,6 +23,9 @@ namespace DedicatedServer.Tests
             TestInfrastructureServices();
             
             Debug.Log("All Clean Architecture Tests Passed!");
+            
+            // Run architecture validation
+            ArchitectureValidationTests.RunValidationTests();
         }
 
         private static void TestDomainEntities()
